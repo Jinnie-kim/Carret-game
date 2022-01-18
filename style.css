@@ -40,6 +40,10 @@ button {
   margin-bottom: 10px;
 }
 
+.play-btn button:hover {
+  transform: scale(1.1);
+}
+
 .play-btn i {
   font-size: 60px;
 }
@@ -56,6 +60,9 @@ button {
 }
 
 .play-count {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   width: 90px;
   height: 90px;
   border: 5px solid #000;
@@ -90,6 +97,10 @@ button {
   padding: 10px;
   margin-bottom: 10px;
   background-color: wheat;
+}
+
+.play-alert button:hover {
+  transform: scale(1.1);
 }
 
 .play-alert button i {

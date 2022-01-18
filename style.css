@@ -9,6 +9,7 @@ button {
 }
 
 .background-img {
+  position: relative;
   width: 100%;
   height: 100vh;
   background-image: url("./assets/img/background.png");
@@ -17,20 +18,26 @@ button {
   background-position: center center;
 }
 
-.play-btn button {
-  display: inline-flex;
-  justify-content: center;
+.play-info {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  position: fixed;
-  top: 20px;
+  position: absolute;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
+}
+
+.play-btn button {
+  text-align: center;
   border: 5px solid #000;
   border-radius: 10px;
   width: 100px;
   height: 100px;
   background-color: orange;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .play-btn i {
@@ -38,29 +45,17 @@ button {
 }
 
 .play-timer {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 17%;
-  left: 50%;
+  text-align: center;
   width: 300px;
   height: 100px;
   border: 5px solid #000;
   border-radius: 10px;
-  transform: translateX(-50%);
   font-size: 80px;
   background-color: #fff;
+  margin-bottom: 10px;
 }
 
 .play-count {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
   width: 90px;
   height: 90px;
   border: 5px solid #000;
@@ -75,7 +70,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: absolute;
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
@@ -103,4 +98,21 @@ button {
 
 .play-alert h1 {
   color: #fff;
+}
+
+.play-bug {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  cursor: pointer;
+}
+
+.play-bug img {
+  display: block;
+  width: 90px;
+  height: 90px;
+}
+
+.play-bug img:hover {
+  transform: scale(1.1);
 }

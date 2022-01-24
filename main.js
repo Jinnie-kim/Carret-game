@@ -1,91 +1,37 @@
 'use strict';
+const CARROT_SIZE = 80;
+const field = document.querySelector('.game__field');
+const fieldRect = field.getBoundingClientRect();
 
-const backgroundImg = document.querySelector('.background-img');
-const playBtn = document.querySelector('.play-btn');
-const playBugs = document.querySelectorAll('.play-bug');
-const reloadBtn = document.querySelectorAll('.play-reload');
-const playCarrots = document.querySelectorAll('.play-carrot');
-const playAlert = document.querySelector('.play-alert');
-const playAlertLose = document.querySelector('.play-alert-lose');
-
-const fullWidth = backgroundImg.clientWidth;
-const fullHeight = backgroundImg.clientHeight;
-
-// 벌레랑 당근 불러오기 (화면 밖으로 빠져나가는 것들은 어케 잡냐?)
-playBtn.addEventListener('click', () => {
-    playBugs.forEach(div => {
-        div.classList.add('played-bug');
-    })
-    for (let i=0; i< playBugs.length; i++) {
-        const playBug = playBugs[i];
-
-        const randomTop = getRandomNumber(0, fullHeight);
-        const randomLeft = getRandomNumber(0, fullWidth);
-        
-
-        playBug.style.top = `${randomTop}px`;
-        playBug.style.left = `${randomLeft}px`;
-    }
-    playCarrots.forEach(div => {
-        div.classList.add('played-carrot');
-    })
-    for(let a=0; a < playCarrots.length; a++) {
-        const playCarrot = playCarrots[a];
-
-        const randomTop = getRandomNumber(0, fullHeight);
-        const randomLeft = getRandomNumber(0, fullWidth);
-        
-
-        playCarrot.style.top = `${randomTop}px`;
-        playCarrot.style.left = `${randomLeft}px`;
-    }
-})
-
-function getRandomNumber(max, min) {
-    return Math.random() * (max - min) + min;
+function initGame() {
+    // (거의) 생성된 벌레와 당근을 필드에 올린다.
+    console.log(fieldRect);
+    addItem('carrot', 5, 'assets/img/carrot.png');
+    addItem('bug', 5, 'assets/img/bug.png');
 }
 
-playCarrots.forEach(div => {
-    div.addEventListener('click', () => {
-        div.classList.add('remove');
-    })
-})
-
-// 재생버튼 누르면 정지버튼으로 변경하기 
-playBtn.addEventListener('click', () => {
-    playBtn.innerHTML = `
-            <button type="button">
-                <i class="fas fa-stop"></i>
-            </button>
-    `
-})
-
-// 벌레 잡으면 팝업 창 띄우기 + 타이머도 멈춰야하는데 타이머 어째 작동시키냐 
-playBugs.forEach(div => {
-    div.addEventListener('click', () => {
-        playAlertLose.classList.add('show');
-    })
-})
-
-// 타이머 시작하기
-function popLoseAlert() {
-    playAlertLose.classList.add('show');
+function addItem(className, count, imgPath) {
+    // 인수를 넘겨서 당근, 벌레의 포지션 랜덤 생성
+    const x1 = 0;
+    const y1 = 0;
+    const x2 = fieldRect.width - CARROT_SIZE;
+    const y2 = fieldRect.height - CARROT_SIZE;
+    // for문의 목적..? i의 최대 개수 까지 반복하면서 각 요소를 만든다..홀리쓋..
+    for (let i = 0; i < count; i++) {
+        const item = document.createElement('img');
+        item.setAttribute('class', className);
+        item.setAttribute('src', imgPath);
+        item.style.position = 'absolute';
+        const x = randomNumber(x1, x2);
+        const y = randomNumber(y1, y2);
+        item.style.left = `${x}px`;
+        item.style.top = `${y}px`;
+        field.appendChild(item);
+    }
 }
 
-playBtn.addEventListener('click', () => {
-    setTimeout(popLoseAlert, 10000);
-})
+function randomNumber(min, max) {
+    return Math.random() * (max - min) + min;        
+}
 
-// 당근 다 잡으면 팝업 창 띄우기 
-if(playCarrots.forEach(div => {
-    div.classList.contains('remove');
-})) {
-    playAlert.classList.add('show');
-};
-
-
-reloadBtn.forEach(button => {
-    button.addEventListener('click', () => {
-    window.location.reload();
-    })
-})
+initGame();

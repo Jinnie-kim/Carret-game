@@ -22,7 +22,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 5%;
   left: 50%;
   transform: translateX(-50%);
@@ -112,10 +112,19 @@ button {
 }
 
 .play-bug {
+  display: none;
+}
+
+.played-bug {
+  display: block;
   position: absolute;
-  top: 50%;
-  left: 20%;
   cursor: pointer;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+.played-bug.remove {
+  display: none;
 }
 
 .play-bug img {
@@ -126,4 +135,77 @@ button {
 
 .play-bug img:hover {
   transform: scale(1.1);
+}
+
+.play-carrot {
+  display: none;
+}
+
+.played-carrot {
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+.played-carrot.remove {
+  display: none;
+}
+.played-carrot img:hover {
+  transform: scale(1.1);
+}
+
+.play-alert {
+  visibility: hidden;
+}
+
+.play-alert.show {
+  visibility: visible;
+  z-index: 2;
+}
+
+.play-alert-lose {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.play-alert-lose button {
+  cursor: pointer;
+  border: 5px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: wheat;
+}
+
+.play-alert-lose button:hover {
+  transform: scale(1.1);
+}
+
+.play-alert-lose button i {
+  font-size: 60px;
+}
+
+.play-alert-lose h1 {
+  color: #fff;
+}
+
+.play-alert-lose {
+  visibility: hidden;
+}
+
+.play-alert-lose.show {
+  visibility: visible;
+  z-index: 2;
 }

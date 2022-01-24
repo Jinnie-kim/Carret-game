@@ -4,88 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carret Game</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" 
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="background-img">
-        <div class="play-bug">
-            <img src="./assets/img/bug.png" alt="bug">
-        </div>
-        <div class="play-bug">
-            <img src="./assets/img/bug.png" alt="bug">
-        </div>
-        <div class="play-bug">
-            <img src="./assets/img/bug.png" alt="bug">
-        </div>
-        <div class="play-bug">
-            <img src="./assets/img/bug.png" alt="bug">
-        </div>
-        <div class="play-bug">
-            <img src="./assets/img/bug.png" alt="bug">
-        </div>
-        <div class="play-bug">
-            <img src="./assets/img/bug.png" alt="bug">
-        </div>
-        <div class="play-bug">
-            <img src="./assets/img/bug.png" alt="bug">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-        <div class="play-carrot">
-            <img src="./assets/img/carrot.png" alt="carrot">
-        </div>
-    </div>
-    <div class="play-info">
-        <div class="play-btn">
-            <button type="button">
+    <section class="game">
+        <div class="game__header">
+            <button class="game__button">
                 <i class="fas fa-play"></i>
             </button>
+            <span class="game__timer">0:0</span>
+            <span class="game__score">10</span>
         </div>
-        <div class="play-timer">
-            0:0
-        </div>
-        <div class="play-count">
-            0
-        </div>
-    </div>
-    <div class="play-alert">
-        <button type="button" class="play-reload">
+        <div class="game__field"></div>
+    </section>
+    <section class="pop-up pop-up--hide">
+        <button class="pop-up__refresh">
             <i class="fas fa-redo"></i>
         </button>
-        <h1>🎉YOU WON🎉</h1>
-    </div>
-    <div class="play-alert-lose">
-        <button type="button" class="play-reload">
-            <i class="fas fa-redo"></i>
-        </button>
-        <h1>🎉YOU LOSE🎉</h1>
-    </div>
+        <span class="pop-up__message">
+            YOU WON!
+        </span>
+    </section>
 </body>
 </html>

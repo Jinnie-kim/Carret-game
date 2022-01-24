@@ -1,211 +1,105 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-
 button {
   border: none;
   background: transparent;
+  cursor: pointer;
 }
 
-.background-img {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background-image: url("./assets/img/background.png");
+body {
+  text-align: center;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 500px;
+  background-image: url(./assets/img/background.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  margin: auto;
+  border-radius: 20px;
 }
 
-.play-info {
+.game__header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+  padding: 20px;
 }
 
-.play-btn button {
-  text-align: center;
-  border: 5px solid #000;
+.game__button {
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+  border: 3px solid #000;
   border-radius: 10px;
-  width: 100px;
-  height: 100px;
   background-color: orange;
-  cursor: pointer;
   margin-bottom: 10px;
 }
 
-.play-btn button:hover {
+.game__button:hover {
   transform: scale(1.1);
 }
 
-.play-btn i {
-  font-size: 60px;
-}
-
-.play-timer {
-  text-align: center;
-  width: 300px;
-  height: 100px;
-  border: 5px solid #000;
+.game__timer {
+  width: 200px;
+  border: 3px solid #000;
   border-radius: 10px;
-  font-size: 80px;
+  margin-bottom: 10px;
   background-color: #fff;
-  margin-bottom: 10px;
+  text-align: center;
+  font-size: 40px;
 }
 
-.play-count {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 90px;
-  height: 90px;
-  border: 5px solid #000;
+.game__score {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #000;
   border-radius: 50%;
-  font-size: 60px;
-  background-color: orange;
-  color: #fff;
+  background-color: salmon;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-.play-alert {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
+.game__field {
+  width: 100%;
+  height: 100vh;
 }
 
-.play-alert {
-  width: 500px;
-  height: 200px;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+.pop-up {
+  display: block;
+  width: 350px;
+  height: 140px;
+  padding: 20px;
+  border-radius: 20px;
+  margin: auto;
+  background-color: #00000090;
+  text-align: center;
+  transform: translateY(-120%);
 }
 
-.play-alert button {
-  cursor: pointer;
-  border: 5px solid #000;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
+.pop-up--hide {
+  display: none;
+}
+
+.pop-up__refresh {
+  width: 60px;
+  height: 60px;
   background-color: wheat;
-}
-
-.play-alert button:hover {
-  transform: scale(1.1);
-}
-
-.play-alert button i {
-  font-size: 60px;
-}
-
-.play-alert h1 {
-  color: #fff;
-}
-
-.play-bug {
-  display: none;
-}
-
-.played-bug {
-  display: block;
-  position: absolute;
-  cursor: pointer;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-}
-
-.played-bug.remove {
-  display: none;
-}
-
-.play-bug img {
-  display: block;
-  width: 90px;
-  height: 90px;
-}
-
-.play-bug img:hover {
-  transform: scale(1.1);
-}
-
-.play-carrot {
-  display: none;
-}
-
-.played-carrot {
-  display: block;
-  position: absolute;
-  cursor: pointer;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-}
-
-.played-carrot.remove {
-  display: none;
-}
-.played-carrot img:hover {
-  transform: scale(1.1);
-}
-
-.play-alert {
-  visibility: hidden;
-}
-
-.play-alert.show {
-  visibility: visible;
-  z-index: 2;
-}
-
-.play-alert-lose {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: 200px;
+  border: 3px solid #000;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 40px;
+  margin-bottom: 20px;
 }
 
-.play-alert-lose button {
-  cursor: pointer;
-  border: 5px solid #000;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: wheat;
+.pop-up__refresh:hover {
+  transform: scale(1.05);
 }
 
-.play-alert-lose button:hover {
-  transform: scale(1.1);
-}
-
-.play-alert-lose button i {
-  font-size: 60px;
-}
-
-.play-alert-lose h1 {
+.pop-up__message {
+  display: block;
+  font-size: 30px;
   color: #fff;
-}
-
-.play-alert-lose {
-  visibility: hidden;
-}
-
-.play-alert-lose.show {
-  visibility: visible;
-  z-index: 2;
 }

@@ -2,10 +2,12 @@
 const CARROT_SIZE = 80;
 const field = document.querySelector('.game__field');
 const fieldRect = field.getBoundingClientRect();
+const playBtn = document.querySelector('.game__button');
+const popUp = document.querySelector('.pop-up');
+const score = document.querySelector('.game__score');
 
 function initGame() {
     // (거의) 생성된 벌레와 당근을 필드에 올린다.
-    console.log(fieldRect);
     addItem('carrot', 5, 'assets/img/carrot.png');
     addItem('bug', 5, 'assets/img/bug.png');
 }
@@ -34,4 +36,12 @@ function randomNumber(min, max) {
     return Math.random() * (max - min) + min;        
 }
 
-initGame();
+playBtn.addEventListener('click', () => {
+    initGame();
+    setTimeout(message, 5000);
+    score.innerHTML = '5';
+})
+
+function message() {
+    popUp.classList.remove('pop-up--hide');
+}

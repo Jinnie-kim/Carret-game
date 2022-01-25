@@ -9,6 +9,7 @@ const fieldRect = field.getBoundingClientRect();
 const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
+const gamePopup = document.querySelector('.pop-up');
 
 // 게임의 상태를 기억하고 있는 변수가 필요 (전역변수)
 let started = false;
@@ -30,10 +31,6 @@ function startGame() {
     showStopButton();
     showTimerandScore();
     startGameTimer();
-}
-
-function stopGame() {
-
 }
 
 function showStopButton() {
@@ -64,8 +61,6 @@ function updateTimerText(time) {
     const seconds = time % 60;
     gameTimer.innerHTML = `${minutes}:${seconds}`;
 }
-
-
 
 function initGame() {
     field.innerHTML = '';
@@ -100,3 +95,15 @@ function randomNumber(min, max) {
     return Math.random() * (max - min) + min;        
 }
 
+function stopGame() {
+    stopTimer();
+    showPopup();
+}
+
+function stopTimer() {
+    clearInterval(timer);
+}
+
+function showPopup() {
+    gamePopup.classList.remove('pop-up--hide');
+}

@@ -47,18 +47,30 @@ function showTimerandScore() {
     gameScore.style.visibility = 'visible';
 }
 
-
-
+function startGameTimer() {
+    let i = 5;
+    gameTimer.innerHTML = `0:${i}`;
+        let interval = setInterval(() => {
+            gameTimer.innerHTML = `0:${i}`;
+            --i;
+            if(i < 0) {
+                clearInterval(interval);
+            }
+        }, 1000);
+}
 
 
 
 function initGame() {
+    field.innerHTML = '';
+    gameScore.innerText = CARROT_COUNT; 
     // (거의) 생성된 벌레와 당근을 필드에 올린다.
-    addItem('carrot', 5, 'assets/img/carrot.png');
-    addItem('bug', 5, 'assets/img/bug.png');
+    addItem('carrot', CARROT_COUNT, 'assets/img/carrot.png');
+    addItem('bug', BUG_COUNT, 'assets/img/bug.png');
 }
 
 function addItem(className, count, imgPath) {
+    // 버튼을 눌러서 게임을 재시작할때마다 필드 비워주기 
     // 인수를 넘겨서 당근, 벌레의 포지션 랜덤 생성
     const x1 = 0;
     const y1 = 0;

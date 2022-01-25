@@ -34,6 +34,20 @@ function startGame() {
     showStopButton();
     showTimerandScore();
     startGameTimer();
+
+    const carrot = document.querySelectorAll('.carrot');
+    for(let i=0; i < carrot.length; i++) {
+        carrot[i].addEventListener('click', () => {
+            carrot[i].classList.add('hide');
+        })
+    }
+
+    const bug = document.querySelectorAll('.bug');
+    for(let k=0; k < bug.length; k++) {
+        bug[k].addEventListener('click', () => {
+            showPopupWithText('LOSE❗️');
+        })
+    }
 }
 
 function stopGame() {

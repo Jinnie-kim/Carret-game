@@ -106,3 +106,17 @@ body {
   font-size: 30px;
   color: #fff;
 }
+
+.carrot.hide {
+  display: none;
+}
+
+.carrot:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.bug:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}

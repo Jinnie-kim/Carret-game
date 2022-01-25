@@ -2,6 +2,7 @@
 const CARROT_SIZE = 80;
 const CARROT_COUNT = 5;
 const BUG_COUNT = 5;
+const GAME_DURATION_SEC = 5;
 
 const field = document.querySelector('.game__field');
 const fieldRect = field.getBoundingClientRect();
@@ -9,8 +10,7 @@ const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
 
-// 게임의 상태를 기억하고 있는 변수가 필요
-
+// 게임의 상태를 기억하고 있는 변수가 필요 (전역변수)
 let started = false;
 let score = 0; 
 let timer = undefined;
@@ -48,15 +48,21 @@ function showTimerandScore() {
 }
 
 function startGameTimer() {
-    let i = 5;
-    gameTimer.innerHTML = `0:${i}`;
-        let interval = setInterval(() => {
-            gameTimer.innerHTML = `0:${i}`;
-            --i;
-            if(i < 0) {
-                clearInterval(interval);
-            }
-        }, 1000);
+    let remainingTimeSec = GAME_DURATION_SEC;
+    updateTimerText(remainingTimeSec);
+    timer = setInterval(() => {
+        if(remainingTimeSec <= 0) {
+            clearInterval(timer);
+            return;
+        }
+        updateTimerText(--remainingTimeSec);
+    }, 1000);
+}
+
+function updateTimerText(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    gameTimer.innerHTML = `${minutes}:${seconds}`;
 }
 
 

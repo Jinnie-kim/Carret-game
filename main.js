@@ -38,12 +38,14 @@ function startGame() {
     field.addEventListener('click', (event) => {
         if(event.target.className == 'carrot') {
             event.target.classList.add('hide');
+            showGameScore();
         }
     })
 
     field.addEventListener('click', (event) => {
         if(event.target.className == 'bug') {
             showPopupWithText('LOSE❗️');
+            clearInterval(timer);
         }
     })    
 }
@@ -67,6 +69,16 @@ function hideGameStopButton() {
 function showTimerandScore() {
     gameTimer.style.visibility = 'visible';
     gameScore.style.visibility = 'visible';
+}
+
+function showGameScore() {
+    let remainingScore = CARROT_COUNT;
+    --remainingScore;
+    updateGameScore(remainingScore);
+}
+
+function updateGameScore(score) {
+    gameScore.innerText = score;
 }
 
 function startGameTimer() {

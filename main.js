@@ -35,19 +35,17 @@ function startGame() {
     showTimerandScore();
     startGameTimer();
 
-    const carrot = document.querySelectorAll('.carrot');
-    for(let i=0; i < carrot.length; i++) {
-        carrot[i].addEventListener('click', () => {
-            carrot[i].classList.add('hide');
-        })
-    }
+    field.addEventListener('click', (event) => {
+        if(event.target.className == 'carrot') {
+            event.target.classList.add('hide');
+        }
+    })
 
-    const bug = document.querySelectorAll('.bug');
-    for(let k=0; k < bug.length; k++) {
-        bug[k].addEventListener('click', () => {
+    field.addEventListener('click', (event) => {
+        if(event.target.className == 'bug') {
             showPopupWithText('LOSE❗️');
-        })
-    }
+        }
+    })    
 }
 
 function stopGame() {

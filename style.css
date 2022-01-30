@@ -107,20 +107,13 @@ body {
   color: #fff;
 }
 
-.carrot.hide {
-  display: none;
+.carrot,
+.bug {
+  transition: transform 100ms ease-in;
 }
 
-.carrot:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.bug.hide {
-  display: none;
-}
-
+.carrot:hover,
 .bug:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   cursor: pointer;
 }

@@ -14,6 +14,12 @@ const gamePopup = document.querySelector('.pop-up');
 const gamePopupText = document.querySelector('.pop-up__message');
 const gamePopupRefresh = document.querySelector('.pop-up__refresh');
 
+const carrotSound = new Audio('./assets/sound/carrot_pull.mp3');
+const bgSound = new Audio('./assets/sound/bg.mp3');
+const bugSound = new Audio('./assets/sound/bug_pull.mp3');
+const alertSound = new Audio('./assets/sound/alert.wav');
+const winSound = new Audio('./assets/sound/game_win.mp3');
+
 // 게임의 상태를 기억하고 있는 변수가 필요 (전역변수)
 let started = false;
 let score = 0; 
@@ -38,6 +44,7 @@ gamePopupRefresh.addEventListener('click', () => {
 
 function startGame() {
     started = true;
+    playSound(bgSound);
     initGame();
     showStopButton();
     showTimerandScore();
@@ -47,6 +54,8 @@ function startGame() {
 // 단순 스탑게임. 내가 스탑버튼 눌렀을 때 일어나는 일인거시야.
 function stopGame() {
     started = false;
+    stopSound(bgSound);
+    playSound(alertSound);
     stopGameTimer();
     hideGameStopButton();
     showPopupWithText('REPLAY❓');
@@ -54,6 +63,8 @@ function stopGame() {
 
 function finishGame(win) {
     started = false;
+    stopSound(bgSound);
+    playSound(win? winSound : bugSound);
     hideGameStopButton();
     stopGameTimer();
     showPopupWithText(win? 'YOU WON🎉' : 'YOU LOSE💩')
@@ -126,6 +137,7 @@ function onFeildClick(event) {
     if(target.className == 'carrot') {
         target.remove();
         score++;
+        playSound(carrotSound);
         updateGameScore();
         if(score == CARROT_COUNT) {
             finishGame(true);
@@ -134,6 +146,16 @@ function onFeildClick(event) {
         finishGame(false);
     }
 }
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play();
+}
+
+function stopSound(sound) {
+    sound.pause();
+}
+
 
 function updateGameScore() {
     gameScore.innerText = CARROT_COUNT - score;
